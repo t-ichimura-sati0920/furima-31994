@@ -26,11 +26,11 @@
 | name   	      | string     |	null: false  	               	 |
 | price  	   	  | integer    |	null: false  	                 |
 | description   | text       |	 	                          	 |
-| status_id 	  | integer    |	 	                           	 |
+| status_id 	  | integer    |	null: false 	               	 |
 | size          | string     |	  	                        	 |
-| cost_id       | integer    |	                            	 |
-| days_id   	  | integer    |	              	               |
-| category_id   | integer    |	 	                           	 |
+| cost_id       | integer    |	null: false                  	 |
+| days_id   	  | integer    |	null: false              	     |
+| category_id   | integer    |	null: false 	               	 |
 | brand         | string     |	               	               |
 | prefacture_id | integer    |	null: false  	               	 |
 | user	        | references |	null: false, foreign_key: true |
@@ -46,7 +46,6 @@
 | -----------------| -----------|	------------------------------ |	
 | user        	   | references | null: false, foreign_key: true |
 | item        	   | references | null: false, foreign_key: true |
-| address        	 | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -64,7 +63,7 @@
 | address 	       | string 	  | null: false              	     |
 | bulding_name	   | string 	  |         	                     |
 | phone_number	   | string 	  | null: false               	   |
-| user        	   | references | null: false, foreign_key: true |
+| order        	   | references | null: false, foreign_key: true |
 
 ### Association
 
