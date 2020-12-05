@@ -6,7 +6,13 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
 
-  context '商品が出品できない時' do
+  context '商品が出品できる時' do
+    it '全ての値が正常である時に保存できる' do
+      expect(@item).to be_valid
+    end
+  end
+    
+    context '商品が出品できない時' do
     it '商品名が空だと保存できないこと' do
       @item.name = nil
       @item.valid?
@@ -41,6 +47,12 @@ RSpec.describe Item, type: :model do
     @item.price = 10000000
     @item.valid?
     expect(@item.errors.full_messages).to include("Price is out of setting range")
+  end
+
+  it 'prefectureを選択していないと保存できないこと' do
+    @item.prefacture_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include()
   end
 end
 

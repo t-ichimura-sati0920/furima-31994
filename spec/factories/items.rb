@@ -7,5 +7,8 @@ FactoryBot.define do
     cost_id{ 2 }
     days_id { 2 }
     category_id { 2 }
+    prefacture_id { 2 }
+    association :user
+    
   end
 end
