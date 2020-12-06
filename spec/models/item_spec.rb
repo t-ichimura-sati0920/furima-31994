@@ -54,6 +54,36 @@ RSpec.describe Item, type: :model do
     @item.valid?
     expect(@item.errors.full_messages).to include()
   end
+
+  it 'カテゴリーを選択していないと保存できないこと' do
+    @item.category_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include()
+  end
+
+  it '発送までの日数を選択していないと保存できないこと' do
+    @item.days_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include()
+  end
+
+  it '配送料の負担を選択していないと保存できないこと' do
+    @item.cost_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include()
+  end
+
+  it '商品の状態を選択していないと保存できないこと' do
+    @item.status_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include()
+  end
+
+  it 'imageが空だと保存できないこと' do
+    @item.image = nil
+    @item.valid?
+    expect(@item.errors.full_messages).to include()
+  end
 end
 
   end
