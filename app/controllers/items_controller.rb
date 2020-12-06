@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:new]
 
   def index
     #商品一覧機能 @items = Item.order("created_at DESC") 
@@ -7,9 +8,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
 
-    unless user_signed_in?
-      redirect_to action: :index
-    end
   end
 
   def create
