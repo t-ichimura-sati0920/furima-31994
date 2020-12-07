@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   else
-    render :index
+    redirect_to action: :index
   end
   end
 
