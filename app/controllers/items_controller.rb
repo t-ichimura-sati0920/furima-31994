@@ -41,8 +41,12 @@ class ItemsController < ApplicationController
    if @item.user_id == current_user.id
     if @item.destroy
       redirect_to root_path
+    else
+      render :edit
     end
-   end
+  else
+    render :index
+  end
   end
 
   private
