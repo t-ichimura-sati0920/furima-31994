@@ -11,6 +11,12 @@ RSpec.describe OrderAddress, type: :model do
       sleep(1)
     end
 
+    context '商品購入がうまくいくとき' do
+      it 'クレジットカード情報(token), postal_code, prefacture_id, city, bulding_number, address, phone_numberが存在していれば購入できる' do
+        expect(@order_address).to be_valid
+      end
+    end
+    
     context '商品購入がうまくいかないとき' do
       it 'クレジットカード情報(token)が空である場合は購入出来ない' do
         @order_address.token = nil
