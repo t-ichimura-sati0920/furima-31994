@@ -15,6 +15,10 @@ RSpec.describe OrderAddress, type: :model do
       it 'クレジットカード情報(token), postal_code, prefacture_id, city, bulding_number, address, phone_numberが存在していれば購入できる' do
         expect(@order_address).to be_valid
       end
+      it 'buldingは空でも購入できる' do
+        @order_address.bulding_name = nil
+        expect(@order_address).to be_valid
+      end
     end
     
     context '商品購入がうまくいかないとき' do
@@ -50,6 +54,11 @@ RSpec.describe OrderAddress, type: :model do
       end
       it 'cityが空である場合は購入出来ない' do
         @order_address.city = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include()
+      end
+      it 'addressが空である場合は購入出来ない' do
+        @order_address.address = nil
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include()
       end
