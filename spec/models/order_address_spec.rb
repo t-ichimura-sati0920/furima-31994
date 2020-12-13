@@ -77,6 +77,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include()
       end
+      it 'phone_numberについては英数字混合では登録できないこと（ハイフンがあれば登録できないこと）' do
+        @order_address.phone_number = '090-1234-5678'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include()
+      end
       it '購入情報(user_id)が紐付いていない場合は購入出来ない' do
         @order_address.user_id = nil
         @order_address.valid?
